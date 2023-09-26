@@ -27,20 +27,20 @@ function Todolist() {
     <div>
       <h1>ToDo List</h1>
       <div className="list-items">
-        <label>
-          <input type="checkbox" />
-          <input
-            type="text"
-            value={newToDo}
-            onChange={(e) => setNewToDo(e.target.value)}
-          />
-        </label>
+        <input
+          type="text"
+          value={newToDo}
+          onChange={(e) => setNewToDo(e.target.value)}
+        />
       </div>
 
       <button onClick={addToDo}>Add</button>
       <ul>
         {toDos.map((toDo, index) => (
           <li key={index}>
+            <label>
+              <input type="checkbox" />
+            </label>
             {toDo} <button onClick={() => removeToDo(index)}>Remove</button>
           </li>
         ))}
