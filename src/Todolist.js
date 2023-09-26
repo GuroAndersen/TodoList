@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./Todolist.css";
 import Checkbox from "@mui/material/Checkbox";
+import Button from "@mui/material/Button";
 import { FormGroup, FormControlLabel } from "@mui/material";
 
 function Todolist() {
-  const [checked, setChecked] = React.useState(false);
-
   // Keep track of the todo items that are present
   const [toDos, setToDos] = useState([]);
   const [newToDo, setNewToDo] = useState("");
@@ -22,22 +21,35 @@ function Todolist() {
   };
 
   // Function for removing ALL todo items
-  const removeAllToDo = (index) => {
+  const removeAllToDo = () => {
     setToDos([]);
+  };
+
+  // Function for adding things with enter button
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      addToDo();
+    }
   };
 
   return (
     <div>
-      <h1>ToDo List</h1>
       <div className="list-items">
         <input
           type="text"
           value={newToDo}
           onChange={(e) => setNewToDo(e.target.value)}
+          onKeyDown={handleKeyPress}
         />
+        <Button
+          onClick={addToDo}
+          variant="contained"
+          style={{ color: "white" }}
+        >
+          +
+        </Button>
       </div>
 
-      <button onClick={addToDo}>Add</button>
       <ul>
         {toDos.map((toDo, index) => (
           <li key={index} className="todo-item">
@@ -51,7 +63,12 @@ function Todolist() {
           </li>
         ))}
       </ul>
-      <button onClick={removeAllToDo}>Remove All</button>
+
+      <div className="bottom-button">
+        <Button onClick={removeAllToDo} variant="contained">
+          Remove All
+        </Button>
+      </div>
     </div>
   );
 }
