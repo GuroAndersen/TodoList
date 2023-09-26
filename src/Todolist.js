@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Todolist.css";
 
 function Todolist() {
   const [checked, setChecked] = React.useState(false);
@@ -37,7 +38,7 @@ function Todolist() {
       <button onClick={addToDo}>Add</button>
       <ul>
         {toDos.map((toDo, index) => (
-          <li key={index}>
+          <li key={index} className="todo-item">
             <label>
               <input type="checkbox" />
             </label>
