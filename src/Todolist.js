@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Todolist.css";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import { FormGroup, FormControlLabel } from "@mui/material";
 
 function Todolist() {
@@ -35,7 +36,10 @@ function Todolist() {
   return (
     <div>
       <div className="list-items">
-        <input
+        <TextField
+          id="outlined-basic"
+          label="Add todo item..."
+          variant="outlined"
           type="text"
           value={newToDo}
           onChange={(e) => setNewToDo(e.target.value)}
@@ -45,6 +49,7 @@ function Todolist() {
           onClick={addToDo}
           variant="contained"
           style={{ color: "white" }}
+          className="add-button"
         >
           +
         </Button>

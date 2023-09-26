@@ -12,5 +12,8 @@
   border-radius: 5px;
   margin-top: 4px;
   margin-bottom: 4px;
-  align-items: center;
+}
+
+.add-button {
+  margin-top: 2px;
 }
