@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 function Todolist() {
+  const [checked, setChecked] = React.useState(false);
+
   // Keep track of the todo items that are present
   const [toDos, setToDos] = useState([]);
   const [newToDo, setNewToDo] = useState("");
@@ -24,11 +26,17 @@ function Todolist() {
   return (
     <div>
       <h1>ToDo List</h1>
-      <input
-        type="text"
-        value={newToDo}
-        onChange={(e) => setNewToDo(e.target.value)}
-      />
+      <div className="list-items">
+        <label>
+          <input type="checkbox" />
+          <input
+            type="text"
+            value={newToDo}
+            onChange={(e) => setNewToDo(e.target.value)}
+          />
+        </label>
+      </div>
+
       <button onClick={addToDo}>Add</button>
       <ul>
         {toDos.map((toDo, index) => (
