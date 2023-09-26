@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Todolist.css";
+import Checkbox from "@mui/material/Checkbox";
+import { FormGroup, FormControlLabel } from "@mui/material";
 
 function Todolist() {
   const [checked, setChecked] = React.useState(false);
@@ -39,10 +41,13 @@ function Todolist() {
       <ul>
         {toDos.map((toDo, index) => (
           <li key={index} className="todo-item">
-            <label>
-              <input type="checkbox" />
-            </label>
-            {toDo} <button onClick={() => removeToDo(index)}>Remove</button>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox style={{ color: "black" }} />}
+                label={toDo}
+              />
+              <button onClick={() => removeToDo(index)}>Remove</button>
+            </FormGroup>
           </li>
         ))}
       </ul>
